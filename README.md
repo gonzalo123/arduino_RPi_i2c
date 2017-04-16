@@ -1,12 +1,11 @@
 Arduino and Raspberry Pi working together (with i2c)
 ======
 
-The most easy way to connect our Arduino board to our Raspberry Py is using the USB cable, but sometimes this communication is a nightmare, especially because there isn't any clock signal to synchronize our devices and we must rely on bitrate. There're different ways to connect our Arduino and our Rasberry py such as I2C, SPI and serial over GPIO. Today we're going to speak about I2C, especially because it's pretty straightforward if we take care with a couple of things. Let's start.
+The most easy way to connect our Arduino board to our Raspberry Py is using the USB cable, but sometimes this communication is a nightmare, especially because there isn't any clock signal to synchronize our devices and we must rely on bitrate. There're different ways to connect our Arduino and our Raspberry Py such as I2C, SPI and serial over GPIO. Today we're going to speak about I2C, especially because it's pretty straightforward if we take care with a couple of things. Let's start.
 
-I2C uses two lines SDA(data) and SCL(clock), in addition to GND (ground). SDA is biderectional so we need to ensure, in one way or another, who is sending data (master or slave). With I2C only master can start communications and also master controls the clock signal. Each device has a 7bit direction so we can connect 128 devices to the same bus.
+I2C uses two lines SDA(data) and SCL(clock), in addition to GND (ground). SDA is bidirectional so we need to ensure, in one way or another, who is sending data (master or slave). With I2C only master can start communications and also master controls the clock signal. Each device has a 7bit direction so we can connect 128 devices to the same bus.
 
 If we want to connect Arduino board and Raspberry py we must ensure that Raspberry pi is the master. That's because Arduino works with 5V and Raspberry py with 3.3V. That means that whe need to use resistors if we don't want destroy our Raspberry pi. But Raspberry pi has 1k8 ohms resistors to the 3.3 votl power rail, so we can connect both devices (if we connect other i2c devices to the bus they must have their pull-up resistors removed)
-
 
 Thats all we need to connect our Raspberry pi to our Arduino board.
 * RPi SDA to Arduino analog 4
